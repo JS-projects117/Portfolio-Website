@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   
+    <title>Hello World Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- Top-right links -->
+<div class="top-right-links">
+    <a href="https://example.com/link1" target="_blank">
+        <img src="githubLogo.png" alt="GitHub">
+    </a>
+    <a href="https://example.com/link2" target="_blank">
+        <img src="linkedinLogo.png" alt="LinkedIn">
+    </a>
+
+</div>
+
+<!-- Loader Overlay -->
+<!-- Console-style Loader -->
+<div id="loader">
+    <div class="console">
+        <pre id="console-text"></pre>
+    </div>
+</div>
+
+
+
+<body>
+
+    <h1 style="text-align: center;">Hello World</h1>
+
+    <div class="button-container">
+        <button>Experience</button>
+        <button>Projects</button>
+        <button>Contact</button>
+    </div>
+
+    <!-- Container box for paragraph and links -->
+    <div class="centered-box">
+        <p>
+          -----------------------------------<br>
+About Me:<br><br>
+
+Software Engineer dedicated to creating efficient quality software. Worked on multiple multi platform games using C#
+          <br> -----------------------------------
+        </p>
+
+        <div class="links-container">
+            <a href="https://github.com/JS-projects117?tab=repositories" target="_blank">
+                <img src="githubLogo.png" alt="Example 1">
+            </a>
+            <a href="https://www.linkedin.com/in/joseph-sanche5--2-/" target="_blank">
+                <img src="linkedinLogo.png" alt="Example 2">
+
+        </div>
+    </div>
+
+    <!-- Projects section -->
+    <div class="projects-grid">
+        <div class="project-box">
+            <h3>
+ML-Weather-Health-Risk-Prediction</h3>
+            <div class="project-desc">
+                <p>Short description of project 1. This will slide up on hover.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <h3>Project 2</h3>
+            <div class="project-desc">
+                <p>Short description of project 2. This will slide up on hover.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <h3>Project 3</h3>
+            <div class="project-desc">
+                <p>Short description of project 3. This will slide up on hover.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <h3>Project 4</h3>
+            <div class="project-desc">
+                <p>Short description of project 4. This will slide up on hover.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inline info boxes -->
+    <div class="inline-boxes">
+        <div class="inline-box">
+            <h4>Skill 1</h4>
+            <p>Description of skill 1.</p>
+        </div>
+        <div class="inline-box">
+            <h4>Skill 2</h4>
+            <p>Description of skill 2.</p>
+        </div>
+        <div class="inline-box">
+            <h4>Skill 3</h4>
+            <p>Description of skill 3.</p>
+        </div>
+        <div class="inline-box">
+            <h4>Skill 4</h4>
+            <p>Description of skill 4.</p>
+        </div>
+    </div>
+
+</body>
+
+<script>
+const consoleText = document.getElementById("console-text");
+
+// Example "assembly-style" lines
+const messages = [
+    "MOV AX, 0x1F",
+    "ADD BX, AX",
+    "INT 0x80",
+    "JMP 0x00400000",
+    "PUSH CX",
+    "POP DX",
+    "NOP",
+    "CALL 0x00401000"
+];
+
+// Last two lines to appear after "loading"
+const finalMessages = [
+    "HLT",
+    "System initialized..."
+];
+
+let linesTyped = 0;
+const totalRandomLines = 15; // number of random lines to show before final messages
+
+// Type each line character by character
+function typeLine(line, charIndex = 0, callback = null) {
+    if (charIndex < line.length) {
+        consoleText.innerHTML += line.charAt(charIndex);
+        setTimeout(() => typeLine(line, charIndex + 1, callback), 5); // typing speed
+    } else {
+        consoleText.innerHTML += "\n"; // new line
+        if (callback) callback();
+    }
+}
+
+// Function to type random lines first
+function typeRandomLines() {
+    if (linesTyped < totalRandomLines) {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        typeLine(messages[randomIndex], 0, () => {
+            linesTyped++;
+            setTimeout(typeRandomLines, 10); // delay between random lines
+        });
+    } else {
+        // After random lines, type final messages
+        typeFinalMessages(0);
+    }
+}
+
+// Function to type final lines sequentially
+function typeFinalMessages(index) {
+    if (index < finalMessages.length) {
+        typeLine(finalMessages[index], 0, () => typeFinalMessages(index + 1));
+    } else {
+        // Fade out loader after final messages
+        const loader = document.getElementById("loader");
+        loader.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+        loader.style.opacity = "0";
+        loader.style.transform = "scale(1.1)"; // slight zoom out effect
+        setTimeout(() => loader.style.display = "none", 700);
+    }
+}
+
+// Start typing when page loads
+window.addEventListener("load", () => {
+    typeRandomLines();
+});
+</script>
+
+
+
+</html>
