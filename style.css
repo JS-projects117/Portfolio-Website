@@ -50,10 +50,14 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.centered-box h2 {
-    color: rgb(204, 133, 0); 
-    margin: 0 0 10px;
-    
+
+
+.centered-box a h5 {
+    color: rgb(204, 133, 0);
+}
+
+.centered-box a {
+    text-decoration: none;
 }
 
 .centered-box h5 {
@@ -69,10 +73,27 @@ body {
   text-shadow: 0px 0px 8px rgba(255, 170, 0, 0.7); /* glowing effect */
 }
 
-.centered-box h6 {
+.top-right-links a {
+    text-decoration: none;
+}
+
+.top-right-links h5 {
   color: rgb(204, 133, 0); 
   margin: 0 0 10px;
   text-align: center;
+  transition: all 0.3s ease-in-out; /* smooth animation */
+}
+
+.top-right-links h5:hover {
+  color: rgb(255, 170, 0);  /* brighter orange on hover */
+  transform: scale(1.1);   /* slight zoom */
+  text-shadow: 0px 0px 8px rgba(255, 170, 0, 0.7); /* glowing effect */
+}
+
+.centered-box h6 {
+  color: rgb(204, 133, 0); 
+  margin: 0 0 10px;
+  text-align: left;
 
 }
 
@@ -99,42 +120,64 @@ body {
 /* Projects grid container */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    max-width: 1000px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* min width 400px */
+    column-gap: 50px;  
+    row-gap: 15px;  
+    max-width: 1200px; /* increase container width */
     margin: 40px auto;
     padding: 0 20px;
 }
 
+
+
 .project-box {
+      width: 100%;
     position: relative;
     background-color: rgba(0, 0, 0, 0.6);
     color: #f5f5f5;
-    padding: 20px;           /* reduce padding */
+      box-sizing: border-box; /* include padding in width */
+    padding: 50px;           /* reduce padding */
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    text-align: center;
+    text-align: left;
     overflow: hidden;         /* keep sliding box inside */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-.project-box:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+.see-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* space between icon and text */
+  color: orange;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.project-desc {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #f5f5f5;
-    transform: translateY(100%); /* hidden below */
-    transition: transform 0.3s ease;
+.see-more-link svg {
+  stroke: currentColor; /* icon takes the text color */
+  transition: transform 0.2s ease;
 }
+
+.see-more-link:hover {
+  transform: scale(1.05);
+  color: #ffb84d; /* lighter orange on hover */
+}
+
+.see-more-link:hover svg {
+  transform: rotate(15deg); /* subtle icon rotation */
+}
+
+h1 {
+    color: white;       /* text color */
+    font-weight: bold;  /* makes it bold */
+    text-align: center; /* keep it centered */
+    font-size: 1.5em;   /* adjust size if you want */
+    margin-top: 20px;   /* space from top */
+}
+
+
+
 
 .project-box:hover .project-desc {
     transform: translateY(0); /* slide up fully */
@@ -207,8 +250,8 @@ h7 {
 }
 
 .top-right-links a img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
