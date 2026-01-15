@@ -112,6 +112,21 @@ body {
     padding:0 20px;
 }
 
+.card-image {
+    display: block;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+}
+
+.card-image img {
+    width: 70px;
+    height: 70px;
+    border-radius: 15%;
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
 .store-logo {
     width: 220px;            /* adjust width as needed */
     height: 60px;            /* maintain rectangle shape */
@@ -122,6 +137,7 @@ body {
     box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* optional subtle shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .store-logo:hover {
     transform: scale(1.05);
@@ -162,9 +178,10 @@ h1 { color:white; font-weight:bold; text-align:center; font-size:1.5em; margin-t
     padding:10px 150px;
     border-radius:15px;
     text-align:left;
-    width:200%;
+    width: 720px;
     box-shadow:0 4px 10px rgba(0,0,0,0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-self:normal;
 }
 .inline-box:hover { transform: scale(1.03); box-shadow:0 6px 15px rgba(0,0,0,0.3); }
 .inline-box h6 {
